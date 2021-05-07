@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+<div class="register-form-wrap">
+	<img src="{% static 'imgs/logos/AMWLogo.png' %}" alt="A.M.W Store Logo" class="logo-img"/>
+	<form class="register-form" action="" method="POST">
+		{% csrf_token %}
+		<h3>{{ page }}</h3>
+		<div class="register-form-inputs">
+
+			<label for="email">E-Mail</label><br />
+			{{ form_register.email }}<br />
+			{% if form_register.email.errors %}
+			<ul>
+				{% for error in form_register.email.errors %}
+				<li>{{ error }}</li>
+				{% endfor %}
+			</ul>
+			{% endif %}
+
+			<label for="password1">Password</label><br />
+			{{ form_register.password1 }}<br />
+			{% if form_register.password1.errors %}
+			<ul>
+				{% for error in form_register.password1.errors %}
+				<li>{{ error }}</li>
+				{% endfor %}
+			</ul>
+			{% endif %}
+
+			<label for="password2">Confirm Password</label><br />
+			{{ form_register.password2 }}
+			{% if form_register.password2.errors %}
+			<ul>
+				{% for error in form_register.password2.errors %}
+				<li>{{ error }}</li>
+				{% endfor %}
+			</ul>
+			{% endif %}
+		</div>
+		<input type="submit" value="Sign Up"/>
+		<p class="go-sign">If you Already have an account Please <a href="{% url 'login' %}">Sign In From Here</a>.</p>
+	</form>
+</div>
+{% endblock %}

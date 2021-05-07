@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+	{% if not requset.user %}
+	<p>{{ msg }}</p>
+	{% else %}
+		{% for article in articles %}
+		<h2 class="subtitle">{{article.title}}</h2>
+		<small>{{ article.time_stamp }}</small>
+
+		<p>{{article.intro}}</p>
+		<a href={% url 'article_details' article.slug %}>Read More</a>
+		<br>
+		<br>
+		<br>
+		<br>
+		{% endfor %}
+	{% endif %}
+{% endblock %}

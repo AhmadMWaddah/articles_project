@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+<div class="sign-form-wrap">
+	<img src="{% static 'imgs/logos/AMWLogo.png' %}" alt="A.M.W Store Logo" class="logo-img"/>
+	<form class="sign-form" action="" method="POST">
+		{% csrf_token %}
+		<h3>{{ page }}</h3>
+		<div class="sign-form-inputs">
+
+			<label for="email">E-Mail</label><br />
+			<input name="email" type="email" placeholder="E-Mail.. " required/><br />
+
+			<label for="password">Password</label><br />
+			<input name="password" type="password" placeholder="Password.. " required/><br />
+
+			{% if messages %}
+			<ul>
+				{% for msg in messages %}
+				<li>{{ msg }}</li>
+				{% endfor %}
+			</ul>
+			{% endif %}
+
+		</div>
+		<input type="submit" value="Sign In"/>
+		<p class="go-sign">If you Don't have an account Please <a href="{% url 'login' %}">Sign Up From Here</a>.</p>
+	</form>
+</div>
+{% endblock %}

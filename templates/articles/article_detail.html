@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+	<h1 class="title">{{article.title}}</h1>
+	<small>{{article.time_stamp}}</small>
+	<h4>{{article.account}}</h4>
+	<p class="has-text-weight-bold">{{article.intro}}</p>
+	<p>{{article.content}}</p>
+{% endblock %}
